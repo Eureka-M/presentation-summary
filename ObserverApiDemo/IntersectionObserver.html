@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .child-box {
+                background-color: red;
+                width: 100px;
+                height: 100px;
+            }
+            .parent-box {
+                width: 200px;
+                height: 900px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent-box">
+            <div class="child-box"></div>
+        </div>
+    </body>
+    <script>
+        let box = document.querySelector('child-box')
+
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((item) => {
+                let tips = item.isIntersecting ? '进入父元素的内部' : '离开了父元素的内部'
+                console.log(tips)
+            })
+        })
+
+        // 父元素是视窗
+        observer.observe(box)
+    </script>
+</html>
