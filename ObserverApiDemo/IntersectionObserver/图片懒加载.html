@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .img-wrapper img {
+                margin-bottom: 20px;
+                width: 400px;
+                height: 400px;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="img-wrapper">
+            <div>
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+                <img src="" alt="" />
+            </div>
+        </div>
+
+        <script>
+            let imgList = document.getElementsByTagName('img')
+            console.log(imgList)
+
+            let io = new IntersectionObserver((entries) => {
+                entries.forEach((item) => {
+                    if (item.isIntersecting) {
+                        item.target.src =
+                            'https://wework.qpic.cn/bizmail/8r3ckW4REgiaK1GJWfGRibVqMMzYLCFiaYjC5rvSicYQTicboaRex5rX7mQ/0'
+                        io.unobserve(item.target)
+                    }
+                })
+            })
+
+            // dom的数组htmlCollect是伪数组，需要转换成数组
+            let imgListCopy = Array.prototype.slice.call(imgList)
+            imgListCopy.forEach((element) => {
+                io.observe(element)
+            })
+        </script>
+    </body>
+</html>

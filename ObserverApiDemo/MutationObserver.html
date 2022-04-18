@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .img-wrapper img {
+                margin-bottom: 20px;
+                width: 400px;
+                height: 400px;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="img-wrapper">
+            <div>
+                <img src="" alt="" />
+                <button id="operation">添加img src</button>
+            </div>
+        </div>
+
+        <script>
+            let imgList = document.getElementsByTagName('img')
+            let button = document.getElementById('operation')
+
+            let mo = new MutationObserver((mutations) => {
+                mutations.forEach((m) => {
+                    console.log(m)
+                })
+            })
+
+            mo.observe(imgList[0], {
+                attributes: true,
+                characterData: true,
+                childList: true,
+                subtree: true,
+                attributeOldValue: true,
+                characterDataOldValue: true
+            })
+
+            button.addEventListener('click', () => {
+                imgList[0].setAttribute(
+                    'src',
+                    'https://wework.qpic.cn/bizmail/8r3ckW4REgiaK1GJWfGRibVqMMzYLCFiaYjC5rvSicYQTicboaRex5rX7mQ/0'
+                )
+            })
+        </script>
+    </body>
+</html>

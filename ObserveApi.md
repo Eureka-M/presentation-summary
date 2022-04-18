@@ -82,3 +82,29 @@ io.disconnect()
     // 阻止mo 继续接收通知，mo 回调函数取消所有监听调用
     mo.disconnect()
 ```
+
+##### 应用
+
+-   防止去水印
+-   结合 trace 追踪代码修改的来源
+
+#### ResizeObserver
+
+可以监听元素大小
+
+```
+const ro = new ResizeObserver(callback)
+// 监听ele 元素的resize
+ro.observe(ele)
+// 取消监听ele元素的resize
+ro.ubobserve(ele)
+// 取消ro 对象监听的所有ele的回调
+ro.disconnect()
+```
+
+##### 应用
+
+-   元素 resize 行为的检测（白板重绘，echarts 图标重绘）
+-   感知交互行为的发生
+-   感知元素是否显示或者隐藏
+-   polyfill: https://github.com/juggle/resize-observer

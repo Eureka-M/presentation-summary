@@ -23,7 +23,7 @@
         </div>
     </body>
     <script>
-        let box = document.querySelector('child-box')
+        let box = document.getElementsByClassName('child-box')[0]
 
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((item) => {
